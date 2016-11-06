@@ -15,7 +15,8 @@ Docker image for [schemup](https://github.com/tmtxt/schemup)
 }
 ```
 
-- Create migration yaml files, each file corresponds to one table
+- Create folder `migrations` inside `schema` folder.
+- Inside `migrations` folder, create migration yaml files, each file corresponds to one table
 - The content of each file is similar to this
 
 ```yaml
@@ -45,7 +46,8 @@ sql: |
   ALTER TABLE warp_avatar ADD COLUMN test2 integer;
 ```
 
-- Create one `versions.json` file contains the version you want to migrate
+- Create one file `versions.json` inside `schema` folder. That file contains the versions you want to
+migrate
 
 ```json
 {
@@ -57,5 +59,5 @@ sql: |
 - Commit changes to the database with this command
 
 ```
-$ docker run -v ./schema:/schemup schemup schemup commit
+$ docker run -v ./schema:/schemup:v0.0.3 schemup schemup commit
 ```
